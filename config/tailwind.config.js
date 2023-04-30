@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   content: [
     './public/*.html',
-    './app/helpers/**/*.rb',
+    './app/helpers/**//*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}'
   ],
@@ -12,6 +12,10 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        primary: '#8B1874',
+        light: '#FFF5FF'
+      }
     },
   },
   plugins: [
