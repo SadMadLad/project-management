@@ -1,0 +1,24 @@
+<h2 class="font-serif font-black text-primary text-5xl text-center my-10">Sign In</h2>
+
+<section class="flex justify-center my-4 mx-5">
+  <%= form_with model: resource, as: resource_name, url: session_path(resource_name), class: 'flex flex-col items-center gap-7 bg-white p-8 rounded max-w-[36rem] w-full shadow' do |f| %>
+    <div class="relative z-0 w-full mb-6 group">
+      <%= f.email_field :email, autofocus: true, autocomplete: 'Email', class: 'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer', placeholder: ' ' %>
+      <%= f.label :email, class: 'peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6' %>
+    </div>
+
+    <div class="relative z-0 w-full mb-6 group">
+      <%= f.password_field :password, autofocus: true, autocomplete: 'Password', class: 'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer', placeholder: ' ' %>
+      <%= f.label :password, class: 'peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6' %>
+    </div>
+
+    <% if resource.errors.present? %>
+      <div class="text-xs text-red-500"><%= resource.errors.full_messages.to_sentence %></div>
+    <% end %>
+
+    <%= f.submit 'Login', class: 'bg-primary hover:bg-purple-900 w-full mb-3 p-3 text-white rounded-full cursor-pointer' %>
+
+    <p class="w-4/5 font-light text-center text-xs text-gray-800 mt-2">Don't have an account? <%= link_to 'Sign Up', new_user_registration_path, class: 'text-primary hover:underline' %></p>
+  <% end %>
+</section>
+
