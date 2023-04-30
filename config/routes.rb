@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root 'pages#index'
+    resources :projects
   end
 
   devise_scope :user do

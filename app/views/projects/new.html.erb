@@ -1,0 +1,19 @@
+<%= render 'shared/navbar' %>
+
+<h1 class="font-serif text-4xl sm:text-5xl font-black text-primary text-center my-5">Let's Set Up Your Project</h1>
+<div class="flex justify-center w-full">
+  <%= form_with model: @project, method: :post, class: 'bg-white shadow w-full max-w-[30rem] my-10 p-8 rounded-lg' do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <div class="flex flex-col gap-2">
+      <%= form.label :title, 'Title of the Project', class: 'block text-sm font-bold' %>
+      <%= form.text_field :title, placeholder: 'Title', class: 'bg-gray-200 appearance-none border border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary' %>
+    </div>
+    <% if @project.errors.present? %>
+      <p class="text-xs text-red-500 mt-1"><%= @project.errors.full_messages.first %></p>
+    <% end %>
+    <div class="text-right">
+      <%= link_to 'Go Back', root_path, class: 'text-black text-opacity-50 mr-5' %>
+      <%= form.submit 'Set up Project', class: 'bg-primary text-white font-bold rounded-full px-5 py-2 mt-5' %>
+    </div>
+  <% end %>
+</div>

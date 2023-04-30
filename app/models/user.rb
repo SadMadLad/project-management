@@ -9,16 +9,18 @@ class User < ApplicationRecord
 
   before_validation :strip_name
 
+  has_one :project, dependent: :destroy
+
   validates :first_name, presence: true,
                          format:   { with: /\A[a-zA-Z]+\z/, message: 'only letters allowed' }
   validates :last_name, presence: true,
                         format:   { with: /\A[a-zA-Z]+\z/, message: 'only letters allowed' }
 
-  private
-
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  private
 
   def strip_name
     self.first_name = first_name.strip.humanize unless first_name.nil?
