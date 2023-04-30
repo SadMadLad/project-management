@@ -1,0 +1,14 @@
+<header class="bg-white px-5 py-2 shadow flex flex-row items-center justify-between">
+  <div>
+    <%= link_to root_path do %>
+      <h2 class="font-black hidden sm:block text-xl text-primary hover:text-orange-500 cursor-pointer">Project Management Software</h2>
+      <h2 class="font-black block sm:hidden text-xl text-primary hover:text-orange-500 cursor-pointer">PMS</h2>
+    <% end %>
+  </div>
+
+  <div>
+    <% unless current_user.project.nil? %>
+      <%= link_to 'Project', project_path(current_user.project), class: "#{request.path == "/projects/#{current_user.project.id}" ? 'font-black text-primary' : '' } hover:text-orange-500" %>
+    <% end %>
+  </div>
+</header>
