@@ -39,7 +39,8 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :user_id, :project_id, :priority)
+    params.require(:task).permit(:title, :description, :user_id, :project_id, :priority, :latitude,
+                                 :longitude)
   end
 
   def assigned_user_joins_project

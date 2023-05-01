@@ -63,6 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_133825) do
     t.bigint "project_id", null: false
     t.bigint "user_id", null: false
     t.integer "priority", default: 0, null: false
+    t.decimal "latitude", default: "31.339291932", null: false
+    t.decimal "longitude", default: "73.383910204", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"

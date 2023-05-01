@@ -12,6 +12,8 @@ class Task < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :priority, presence: true
+  validates :latitude, presence: true
+  validates :longitude, presence: true
 
   private
 
