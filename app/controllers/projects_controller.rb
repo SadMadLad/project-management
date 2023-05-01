@@ -2,20 +2,22 @@
 
 # Controller for managing projects
 class ProjectsController < ApplicationController
+  layout 'authenticated'
+
+  def index
+    @projects = current_user.projects
+  end
+
   def show
     @project = Project.find(params[:id])
   end
 
   def new
-    if current_user.project.present?
-      redirect_to project_path(current_user.project), notice: 'You already have a project'
-    else
-      @project = Project.new
-    end
+    @project = Project.new
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.create(project_params)
     if @project.save
       redirect_to root_path, notice: 'Project was created successfully.'
     else
@@ -23,9 +25,18 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @project = Project.find(params[:id])
+    if @project.destroy
+      redirect_to projects_path, notice: 'Project was successfully removed.'
+    else
+      redirect_to projects_path, notice: 'Could not remove the project'
+    end
+  end
+
   private
 
   def project_params
-    params.require(:project).permit(:user_id, :title)
+    params.require(:project).permit(:title)
   end
 end
