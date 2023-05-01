@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to @project
+      redirect_to root_path, notice: 'Project was created successfully.'
     else
       render :new, status: :unprocessable_entity
     end

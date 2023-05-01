@@ -6,9 +6,8 @@
     <% end %>
   </div>
 
-  <div>
-    <% unless current_user.project.nil? %>
-      <%= link_to 'Project', project_path(current_user.project), class: "#{request.path == "/projects/#{current_user.project.id}" ? 'font-black text-primary' : '' } hover:text-orange-500" %>
-    <% end %>
+  <div class="flex flex-row gap-4">
+    <%= link_to 'Project', root_path, class: "#{request.path == root_path ? 'font-black text-primary' : '' } hover:text-orange-500" %>
+    <%= link_to 'Tasks', '#', class: "#{request.path == '#' ? 'font-black text-primary' : '' } hover:text-orange-500" %>
   </div>
 </header>

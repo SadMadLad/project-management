@@ -1,7 +1,11 @@
 <%= render 'shared/navbar' %>
 <h3 class="font-serif text-4xl sm:text-5xl font-black text-primary text-center my-5">Welcome! <%= current_user.full_name %></h3>
 
-<% if current_user.project.nil? %>
+<% if @project.nil? %>
   <%= link_to 'Add your project', new_project_path, class: 'fixed bottom-5 right-5 sm:bottom-16 sm:right-16 bg-primary text-white font-bold px-5 py-2 rounded-full text-xl' %>
   <p class="text-black text-opacity-30 text-center text-base sm:text-2xl mt-10">You currently don't have your project added</p>
+<% end %>
+
+<% unless @project.nil? %>
+  <h2 class="font-serif text-3xl font-black text-primary text-center">Project: <%= @project.title %></h2>
 <% end %>

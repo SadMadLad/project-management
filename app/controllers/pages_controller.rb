@@ -2,5 +2,7 @@
 
 # Controller for general Pages
 class PagesController < ApplicationController
-  def index; end
+  def project
+    @project = current_user.project
+  end
 end
