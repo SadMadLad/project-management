@@ -8,6 +8,7 @@ ruby '3.2.1'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'importmap-rails'
+gem 'image_processing', '~> 1.2'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
