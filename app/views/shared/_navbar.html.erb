@@ -6,8 +6,9 @@
     <% end %>
   </div>
 
-  <div class="flex flex-row gap-4">
-    <%= link_to 'Project', root_path, class: "#{request.path == root_path ? 'font-black text-primary' : '' } hover:text-orange-500" %>
-    <%= link_to 'Tasks', '#', class: "#{request.path == '#' ? 'font-black text-primary' : '' } hover:text-orange-500" %>
+  <div class="flex flex-row items-center gap-2 sm:gap-4">
+    <%= link_to 'Projects', root_path, class: "#{request.path == root_path || request.path == projects_path ? 'font-black text-primary' : '' } hover:text-orange-500" %>
+    <%= link_to 'Tasks', tasks_path, class: "#{request.path == tasks_path ? 'font-black text-primary' : '' } hover:text-orange-500" %>
+    <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'bg-red-500 px-3 py-2 rounded-full font-black text-white' %>
   </div>
 </header>

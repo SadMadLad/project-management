@@ -1,0 +1,17 @@
+<div class="bg-white shadow rounded-lg min-w-[12rem] p-4 flex flex-col gap-4 items-center">
+  <%= link_to project do %>
+    <h4 class="text-primary font-black text-xl hover:underline"><%= project.title %></h4>
+  <% end %>
+
+  <div class="text-center border-b pb-4">Tasks Count: <strong><%= project.tasks.count %></strong></div>
+  <p>Members Count: <strong><%= project.users.count %></strong></p>
+
+  <strong class="hover:underline">Members</strong>
+  <ul class="flex flex-col items-center">
+    <% project.users.each do |user| %>
+      <li><%= user.full_name %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to 'Delete', project_path(project), class: 'rounded-full text-center bg-red-500 font-black text-white px-4 py-2', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+</div>
