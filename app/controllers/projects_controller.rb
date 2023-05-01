@@ -2,15 +2,15 @@
 
 # Controller for managing projects
 class ProjectsController < ApplicationController
+  before_action :set_project, only: %i[show destroy]
+
   layout 'authenticated'
 
   def index
     @projects = current_user.projects
   end
 
-  def show
-    @project = Project.find(params[:id])
-  end
+  def show; end
 
   def new
     @project = Project.new
@@ -26,7 +26,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     if @project.destroy
       redirect_to projects_path, notice: 'Project was successfully removed.'
     else
@@ -35,6 +34,10 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
   def project_params
     params.require(:project).permit(:title)

@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
+  before_action :set_task, only: %i[show destroy]
+
   layout 'authenticated'
 
   def index
     @tasks = current_user.tasks
   end
 
-  def show
-    @task = Task.find(params[:id])
-  end
+  def show; end
 
   def new
     @project = Project.find(params[:id])
@@ -28,7 +28,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
     if @task.destroy
       flash.now[:notice] = 'Task deleted successfully'
     else
@@ -37,6 +36,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
   def task_params
     params.require(:task).permit(:title, :description, :user_id, :project_id, :priority, :latitude,
