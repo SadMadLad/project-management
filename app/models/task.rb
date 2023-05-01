@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Task < ApplicationRecord
   enum priority: { standard: 0, important: 1, urgent: 2 }
 
