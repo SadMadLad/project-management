@@ -1,5 +1,20 @@
-<%= render 'shared/navbar' %>
-
 <h1 class="font-black font-serif text-3xl text-primary text-center my-5"><%= @project.title %></h1>
-<p class="text-black text-opacity-30 text-center text-base sm:text-2xl mt-10">You currently do not have tasks.</p>
+<div id="no_task">
+  <% if @project.tasks.empty? %>
+    <p class="text-black text-opacity-30 text-center text-base sm:text-2xl mt-10">You currently don't have any tasks in this project</p>
+  <% end %>
+</div>
 
+<div class="flex flex-wrap gap-5 mx-4 sm:mx-10 justify-center" id="tasks">
+  <% if @project.tasks.present? %>
+    <% @project.tasks.each do |task| %>
+      <%= render 'tasks/task', task: %>
+    <% end %>
+  <% end %>
+</div>
+
+
+<%= link_to 'Add New Task', new_task_path(id: @project.id), data: { turbo_frame: 'new_task' }, class: 'fixed bottom-5 right-5 sm:bottom-16 sm:right-16 bg-primary text-white font-bold px-5 py-2 rounded-full text-xl' %>
+
+<%= turbo_frame_tag 'new_task' %>
+<%= turbo_frame_tag 'task_dialog' %>
