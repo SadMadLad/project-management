@@ -9,7 +9,9 @@ class User < ApplicationRecord
 
   before_validation :strip_name
 
-  has_one :project, dependent: :destroy
+  has_many :user_project_maps, dependent: :destroy
+  has_many :projects, through: :user_project_maps, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 
   validates :first_name, presence: true,
                          format:   { with: /\A[a-zA-Z]+\z/, message: 'only letters allowed' }

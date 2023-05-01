@@ -1,0 +1,10 @@
+<h3 class="font-serif text-4xl sm:text-5xl font-black text-primary text-center my-5">Tasks Page</h3>
+<p class="text-black text-opacity-30 text-center text-base sm:text-2xl my-10">This is the page where tasks assigned to you show up.</p>
+
+<div class="flex flex-wrap gap-5 justify-center mx-4 sm:mx-10" id="tasks">
+  <% @tasks.each do |task| %>
+    <%= render 'tasks/task', task: %>
+  <% end %>
+</div>
+
+<%= turbo_frame_tag 'task_dialog' %>

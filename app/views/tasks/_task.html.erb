@@ -1,0 +1,7 @@
+<div class="bg-white flex flex-col gap-5 p-5 rounded-lg shadow min-w-[10rem] max-w-[25rem]" id="<%= dom_id task %>">
+  <div class="w-full h-3 bg-blue-500 rounded-full my-2 <%= task.standard? ? 'bg-green-500' : (task.important? ? 'bg-yellow-500' : 'bg-red-500') %>"></div>
+  <%= link_to task, data: { turbo_frame: 'task_dialog' } do %>
+    <p class="font-extrabold text-primary text-xl border-b pb-2 hover:underline cursor-pointer"><%= task.title %></p>
+  <% end %>
+  <%= link_to 'Delete', task_path(task), class: 'rounded-full text-center bg-red-500 font-black text-white px-4 py-2' ,data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+</div>

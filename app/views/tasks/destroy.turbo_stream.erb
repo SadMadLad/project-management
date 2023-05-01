@@ -1,0 +1,5 @@
+<%= turbo_stream.remove dom_id(@task) %>
+
+<%= turbo_stream.update 'no_task' do %>
+  <p class="text-black text-opacity-30 text-center text-base sm:text-2xl mt-10">You currently don't have any tasks in this project</p>
+<% end if @task.project.tasks.empty? %>

@@ -1,0 +1,22 @@
+<h3 class="font-serif text-4xl sm:text-5xl font-black text-primary text-center my-5">Task</h3>
+
+<%= turbo_frame_tag 'task_dialog' do %>
+  <dialog class="p-0 rounded-2xl w-full max-w-[48rem]" data-controller="dialog" data-dialog-keep-value="true" data-action="click->dialog#close" data-turbo-temporary>
+    <div class="w-full h-full p-5 bg-gray-100 bg-opacity-50" data-action="click->dialog#stay">
+      <h4 class="font-extralight mb-5 text-3xl"><%= @task.title %></h4>
+      <div class="flex items-center gap-3 my-3">
+        <p class="font-bold">Priority: </p>
+        <p class="font-extrabold text-xl <%= @task.standard? ? 'text-green-500' : (@task.important? ? 'text-orange-500' : 'text-red-500') %>"><%= @task.priority.titleize %></p>
+      </div>
+      <div class="flex items-center gap-3 mt-3">
+        <p class="font-bold">Assigned to: </p>
+        <p><%= @task.user.full_name %></p>
+      </div>
+
+      <p class="font-bold my-5">Description: </p>
+      <div class="bg-white p-5 rounded-lg shadow">
+        <%= @task.description %>
+      </div>
+    </div>
+  </dialog>
+<% end %>

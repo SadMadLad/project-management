@@ -1,0 +1,5 @@
+<%= turbo_stream.append 'tasks' do %>
+  <%= render 'tasks/task', task: @task %>
+<% end %>
+
+<%= turbo_stream.update 'no_task' %>

@@ -2,7 +2,9 @@
 
 # Every user has one project
 class Project < ApplicationRecord
-  belongs_to :user
+  has_many :user_project_maps, dependent: :destroy
+  has_many :users, through: :user_project_maps, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 
   before_validation :strip_title
 
