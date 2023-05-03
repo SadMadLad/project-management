@@ -5,6 +5,9 @@
   <% end %>
 </div>
 
+<%# Task Map %>
+<%= render 'projects/task_map', project: @project %>
+
 <div class="flex flex-wrap gap-5 mx-4 sm:mx-10 justify-center" id="tasks">
   <% if @project.tasks.present? %>
     <% @project.tasks.each do |task| %>
