@@ -12,33 +12,32 @@ class TasksController < ApplicationController
   def show; end
 
   def new
-    @project = Project.find(params[:id])
-    @task = Task.new
+    @task = Task.new(project_id: params[:id])
   end
 
   def create
-    @project = Project.find(params[:task][:project_id])
     @task = Task.new(task_params)
     if @task.save
-      flash.now[:notice] = 'Task created successfully'
       assigned_user_joins_project
+      @tasks = @task.project.tasks
+      respond_to do |format|
+        format.html { redirect_to @project.task }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if @task.destroy
-      flash.now[:notice] = 'Task deleted successfully'
-    else
-      flash.now[:alert] = 'Could not delete the task'
-    end
+    @task.destroy
   end
 
   private
 
   def set_task
     @task = Task.find(params[:id])
+    @tasks = @task.project.tasks
   end
 
   def task_params

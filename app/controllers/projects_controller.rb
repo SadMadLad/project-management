@@ -10,7 +10,9 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects
   end
 
-  def show; end
+  def show
+    @tasks = @project.tasks
+  end
 
   def new
     @project = Project.new
@@ -19,7 +21,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.create(project_params)
     if @project.save
-      redirect_to root_path, notice: 'Project was created successfully.'
+      redirect_to projects_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,9 +29,9 @@ class ProjectsController < ApplicationController
 
   def destroy
     if @project.destroy
-      redirect_to projects_path, notice: 'Project was successfully removed.'
+      redirect_to projects_path
     else
-      redirect_to projects_path, notice: 'Could not remove the project'
+      redirect_to projects_path
     end
   end
 
