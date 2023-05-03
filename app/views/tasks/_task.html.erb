@@ -4,5 +4,5 @@
     <p class="font-extrabold text-primary text-xl border-b pb-2 hover:underline cursor-pointer"><%= task.title %></p>
   <% end %>
   <%= link_to 'Delete', task_path(task), class: 'rounded-full text-center bg-red-500 font-black text-white px-4 py-2' ,data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-  
+
 </div>

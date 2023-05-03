@@ -8,7 +8,7 @@
 <% unless @projects.empty? %>
   <div class="flex flex-wrap justify-center mx-5 sm:mx-10 gap-5">
     <% @projects.each do |project| %>
-      <%= render 'projects/project', project: %>
+      <%= render 'project', project: %>
     <% end %>
   </div>
 <% end %>
