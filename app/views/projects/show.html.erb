@@ -1,18 +1,13 @@
 <h1 class="font-black font-serif text-3xl text-primary text-center my-5"><%= @project.title %></h1>
-<div id="no_task">
-  <% if @project.tasks.empty? %>
-    <p class="text-black text-opacity-30 text-center text-base sm:text-2xl mt-10">You currently don't have any tasks in this project</p>
-  <% end %>
-</div>
+
+<p class="text-black text-opacity-30 text-center text-base sm:text-2xl mt-10">Tasks for your project will be displayed here.</p>
 
 <%# Task Map %>
-<%= render 'projects/task_map', project: @project %>
+<%= render 'project_map', tasks: @project.tasks %>
 
 <div class="flex flex-wrap gap-5 mx-4 sm:mx-10 justify-center" id="tasks">
-  <% if @project.tasks.present? %>
-    <% @project.tasks.each do |task| %>
-      <%= render 'tasks/task', task: %>
-    <% end %>
+  <% @tasks.each do |task| %>
+    <%= render 'tasks/task', task: %>
   <% end %>
 </div>
 

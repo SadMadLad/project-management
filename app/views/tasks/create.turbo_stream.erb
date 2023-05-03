@@ -2,8 +2,8 @@
   <%= render 'tasks/task', task: @task %>
 <% end %>
 
-<%= turbo_stream.update 'no_task' %>
-
-<%= turbo_stream.update 'task_map' do %>
-  <%= render 'projects/task_map', project: @task.project %>
+<%= turbo_stream.update 'new_task' %>
+<%= turbo_stream.update 'project_map' do %>
+  <%= render 'projects/project_map', tasks: @tasks %>
 <% end %>
+
