@@ -1,7 +1,7 @@
 <h3 class="font-serif text-4xl sm:text-5xl font-black text-primary text-center my-5">Task</h3>
 
 <%= turbo_frame_tag 'task_dialog' do %>
-  <dialog class="p-0 rounded-2xl w-full max-w-[48rem]" data-controller="dialog" data-dialog-keep-value="true" data-action="click->dialog#close" data-turbo-temporary>
+  <dialog class="p-0 rounded-2xl w-full max-w-[48rem]" data-controller="dialog" data-dialog-target="dialog" data-dialog-keep-value="true" data-action="click->dialog#close" data-turbo-temporary>
     <div class="w-full h-full p-5 bg-gray-100 bg-opacity-50" data-action="click->dialog#stay">
       <h4 class="font-extralight mb-5 text-3xl"><%= @task.title %></h4>
       <div class="flex items-center gap-3 my-3">
@@ -19,7 +19,7 @@
       </div>
 
       <p class="font-bold mt-5">Location: </p>
-      <div data-controller="map" data-map-latitude-value="<%= @task.latitude %>" data-map-longitude-value="<%= @task.longitude %>" data-map-is-form-value="false">
+      <div data-controller="map" data-map-latitude-value="<%= @task.latitude %>" data-map-longitude-value="<%= @task.longitude %>">
         <div data-map-target="map" class="h-40"></div>
       </div>
     </div>

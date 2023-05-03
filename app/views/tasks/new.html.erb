@@ -1,10 +1,10 @@
 <h3 class="font-serif text-4xl sm:text-5xl font-black text-primary text-center my-5">Create New Task</h3>
 
 <%= turbo_frame_tag 'new_task' do %>
-  <dialog class="p-0 rounded-2xl w-full max-w-[48rem]" data-controller="dialog" data-dialog-keep-value="true" data-action="click->dialog#close" data-turbo-temporary>
+  <dialog class="p-0 rounded-2xl w-full max-w-[48rem]" data-controller="dialog" data-dialog-target="dialog" data-dialog-keep-value="true" data-action="click->dialog#close" data-turbo-temporary>
     <div class="w-full h-full p-5" data-action="click->dialog#stay">
       <h4 class="font-extralight mb-5 text-3xl">New Task</h4>
-      <%= form_with model: @task, method: :post, data: { dialog_target: 'form' }  do |form| %>
+      <%= form_with model: @task, method: :post do |form| %>
         <%= form.hidden_field :project_id, value: @project.id %>
         <div>
           <%= form.label :title, 'Task Title', class: 'block font-bold' %>
