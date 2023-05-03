@@ -3,3 +3,7 @@
 <% end %>
 
 <%= turbo_stream.update 'no_task' %>
+
+<%= turbo_stream.update 'task_map' do %>
+  <%= render 'projects/task_map', project: @task.project %>
+<% end %>
